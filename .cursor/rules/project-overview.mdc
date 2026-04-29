@@ -1,0 +1,29 @@
+---
+description: MeetIQ project overview, ownership boundaries, and high-level conventions
+alwaysApply: true
+---
+
+# MeetIQ — Project Overview
+
+MeetIQ is an AI-powered video conferencing SaaS. Monorepo with two top-level packages:
+
+```
+/frontend   # Next.js 15 App Router — UI only.        Owned by AI agent.
+/backend    # Node.js + Express + TS                  Owned by the human dev.
+```
+
+## Ownership Rules (HARD)
+
+- The AI agent **builds and maintains `frontend/`**.
+- The human dev **owns all backend code**. The AI agent must NEVER:
+  - Create, edit, or delete files inside `backend/` unless the user says "fix it" or explicitly asks.
+  - Generate full backend implementations.
+  - Suggest backend rewrites or refactors unprompted.
+- For backend questions: give hints, architectural guidance, and debugging help only. Ask what the user has tried first if unclear.
+
+## Cross-cutting Conventions
+
+- Stack is fixed (see spec): Next.js, TS, Tailwind, shadcn/ui, Framer Motion on the frontend; Node, Express, TS, Prisma, PostgreSQL, Socket.IO, Redis/BullMQ, OpenAI on the backend.
+- API contract lives in shared types — when the agent needs a backend type, it stubs a TS interface in `frontend/src/types/` and flags it for the user to align.
+- No secrets in the repo. `.env.example` files only.
+- Prefer small, focused commits. Never commit unless the user explicitly asks.

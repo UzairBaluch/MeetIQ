@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# MeetIQ 🚀
+> AI-powered video conferencing platform with smart meeting notes, transcripts, and action items.
+MeetIQ is a modern fullstack video conferencing SaaS that combines real-time communication with AI-powered productivity tools. Users can host meetings, chat, share screens, and automatically generate meeting summaries, transcripts, and tasks using AI.
+---
+## ✨ Features
+### 🎥 Video Conferencing
+- HD real-time video/audio calls
+- Join / create meetings via invite link
+- Screen sharing
+- Participant management
+- Meeting rooms
+### 💬 Real-time Communication
+- Live chat inside meetings
+- Socket-based real-time updates
+- Participant presence (join/leave status)
+### 🧠 AI Meeting Assistant
+- Automatic meeting summaries
+- Full transcript generation
+- Action item extraction
+- Key decisions tracking
+### 📊 Dashboard
+- Meeting history
+- Access past summaries
+- View recordings (if enabled)
+---
+## 🏗️ Architecture
 
-First, run the development server:
+Frontend  → Next.js (React + TypeScript)
+Backend   → Node.js (Express + TypeScript)
+Realtime  → Socket.IO
+Database  → PostgreSQL (Prisma ORM)
+Queue     → Redis + BullMQ
+Storage   → AWS S3 / Cloud storage
+AI        → OpenAI API
+Video     → WebRTC / LiveKit (or provider)
 
+---
+## 📁 Project Structure
+
+meetiq/
+│
+├── frontend/        # Next.js UI
+├── backend/         # Express API
+│   ├── modules/
+│   ├── services/
+│   ├── routes/
+│   ├── jobs/
+│   └── realtime/
+│
+├── prisma/          # Database schema
+└── docs/            # Architecture notes
+
+---
+## 🔄 Core Flow
+1. User signs up / logs in
+2. Creates or joins a meeting
+3. Video call starts (WebRTC/LiveKit)
+4. Users chat and collaborate in real-time
+5. Meeting is recorded or processed
+6. AI generates:
+   - Summary
+   - Transcript
+   - Action items
+7. Data is saved in dashboard
+---
+## 🧠 AI Features
+MeetIQ uses AI to make meetings productive:
+- 📝 Summarize conversations
+- 🎯 Extract action items
+- 📌 Highlight key decisions
+- 🔍 Search past meetings
+- 📄 Generate meeting notes automatically
+---
+## ⚙️ Backend Modules
+- Auth (JWT + refresh tokens)
+- Meetings system
+- Workspaces + members
+- Real-time socket gateway
+- AI processing pipeline
+- Job queue system (BullMQ)
+- File storage (S3)
+---
+## 🚀 Getting Started
+### 1. Clone repo
 ```bash
+git clone https://github.com/yourusername/meetiq.git
+cd meetiq
+
+2. Install dependencies
+
+Frontend:
+
+cd frontend
+npm install
+
+Backend:
+
+cd backend
+npm install
+
+3. Setup environment variables
+
+Create .env files in backend:
+
+DATABASE_URL=
+REDIS_URL=
+JWT_SECRET=
+OPENAI_API_KEY=
+S3_BUCKET=
+
+4. Run development servers
+
+Backend:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⸻
 
-## Learn More
+🎯 MVP Scope
 
-To learn more about Next.js, take a look at the following resources:
+Initial version includes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Auth system
+* Video meetings
+* Chat
+* Screen sharing
+* AI meeting summaries
+* Basic dashboard
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⸻
 
-## Deploy on Vercel
+🚧 Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Stripe billing system
+* Team workspaces
+* Meeting recordings
+* Slack / Notion integrations
+* Advanced analytics
+* Mobile app
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⸻
+
+💡 Vision
+
+MeetIQ aims to replace traditional meeting tools by making every meeting:
+
+* Recorded
+* Summarized
+* Actionable
+* Searchable
+
+⸻
+
+📸 Screenshots (Coming Soon)
+
+* Landing page
+* Meeting room UI
+* AI notes dashboard
+
+⸻
+
+🧑‍💻 Author
+
+Built as a fullstack + AI engineering portfolio project.
+
+⸻
+
+📜 License
+
+MIT License

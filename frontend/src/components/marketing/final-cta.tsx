@@ -28,19 +28,21 @@ export function FinalCta() {
               Start free in under a minute. Bring your team along when you&apos;re ready.
             </p>
             <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 rounded-full px-7 text-base shadow-lg">
-                <Link href="/sign-up">
-                  Get started
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
+              <Button
+                render={<Link href="/sign-up" />}
+                size="lg"
+                className="h-12 rounded-full px-7 text-base shadow-lg"
+              >
+                Get started
+                <ArrowRight className="ml-1 h-4 w-4" />
               </Button>
               <Button
-                asChild
+                render={<Link href="/contact" />}
                 size="lg"
                 variant="outline"
                 className="h-12 rounded-full border-border/70 bg-background/60 px-7 text-base backdrop-blur-md"
               >
-                <Link href="/contact">Book a demo</Link>
+                Book a demo
               </Button>
             </div>
           </div>

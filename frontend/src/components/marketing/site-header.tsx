@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -65,21 +65,21 @@ export function SiteHeader() {
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
-          <Button
-            render={<Link href="/sign-in" />}
-            variant="ghost"
-            size="sm"
-            className="hidden md:inline-flex"
+          <Link
+            href="/sign-in"
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "sm" }),
+              "hidden md:inline-flex",
+            )}
           >
             Sign in
-          </Button>
-          <Button
-            render={<Link href="/sign-up" />}
-            size="sm"
-            className="hidden md:inline-flex"
+          </Link>
+          <Link
+            href="/sign-up"
+            className={cn(buttonVariants({ size: "sm" }), "hidden md:inline-flex")}
           >
             Start free
-          </Button>
+          </Link>
 
           <Sheet>
             <SheetTrigger
@@ -112,16 +112,18 @@ export function SiteHeader() {
                 ))}
               </div>
               <div className="mt-6 flex flex-col gap-2 border-t border-border px-4 pt-6">
-                <Button
-                  render={<Link href="/sign-in" />}
-                  variant="outline"
-                  className="w-full"
+                <Link
+                  href="/sign-in"
+                  className={cn(buttonVariants({ variant: "outline" }), "w-full")}
                 >
                   Sign in
-                </Button>
-                <Button render={<Link href="/sign-up" />} className="w-full">
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className={cn(buttonVariants(), "w-full")}
+                >
                   Start free
-                </Button>
+                </Link>
                 <div className="mt-2 flex justify-end">
                   <ThemeToggle />
                 </div>

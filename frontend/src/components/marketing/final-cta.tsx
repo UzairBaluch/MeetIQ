@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { SectionReveal } from "@/components/shared/section-reveal";
 
 export function FinalCta() {
@@ -28,22 +29,25 @@ export function FinalCta() {
               Start free in under a minute. Bring your team along when you&apos;re ready.
             </p>
             <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button
-                render={<Link href="/sign-up" />}
-                size="lg"
-                className="h-12 rounded-full px-7 text-base shadow-lg"
+              <Link
+                href="/sign-up"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "h-12 rounded-full px-7 text-base shadow-lg",
+                )}
               >
                 Get started
                 <ArrowRight className="ml-1 h-4 w-4" />
-              </Button>
-              <Button
-                render={<Link href="/contact" />}
-                size="lg"
-                variant="outline"
-                className="h-12 rounded-full border-border/70 bg-background/60 px-7 text-base backdrop-blur-md"
+              </Link>
+              <Link
+                href="/contact"
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" }),
+                  "h-12 rounded-full border-border/70 bg-background/60 px-7 text-base backdrop-blur-md",
+                )}
               >
                 Book a demo
-              </Button>
+              </Link>
             </div>
           </div>
         </SectionReveal>

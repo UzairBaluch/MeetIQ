@@ -66,22 +66,22 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button asChild size="lg" className="h-12 rounded-full px-6 text-base shadow-lg">
-            <Link href="/sign-up">
-              Start free
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
+          <Button
+            render={<Link href="/sign-up" />}
+            size="lg"
+            className="h-12 rounded-full px-6 text-base shadow-lg"
+          >
+            Start free
+            <ArrowRight className="ml-1 h-4 w-4" />
           </Button>
           <Button
-            asChild
+            render={<Link href="#demo" />}
             size="lg"
             variant="outline"
             className="h-12 rounded-full border-border/70 bg-background/60 px-6 text-base backdrop-blur-md"
           >
-            <Link href="#demo">
-              <PlayCircle className="mr-1 h-4 w-4" />
-              Watch demo
-            </Link>
+            <PlayCircle className="mr-1 h-4 w-4" />
+            Watch demo
           </Button>
         </motion.div>
 

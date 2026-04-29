@@ -107,11 +107,11 @@ export function PricingPreview() {
                 </div>
 
                 <Button
-                  asChild
+                  render={<Link href={tier.href} />}
                   className={cn("mt-6 h-11", !tier.featured && "")}
                   variant={tier.featured ? "default" : "outline"}
                 >
-                  <Link href={tier.href}>{tier.cta}</Link>
+                  {tier.cta}
                 </Button>
 
                 <ul className="mt-7 space-y-3 text-sm">

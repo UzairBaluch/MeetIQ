@@ -1,0 +1,54 @@
+# --- Cursor & local AI tooling (do not push) ---
+.cursor/
+.cursorignore
+AGENTS.md
+CLAUDE.md
+.claude/
+
+# --- Node / package managers ---
+node_modules/
+.pnpm-store/
+.yarn/
+.npm/
+*.tsbuildinfo
+
+# --- Next.js ---
+.next/
+out/
+
+# --- Build / coverage ---
+dist/
+build/
+coverage/
+*.lcov
+
+# --- Env files (NEVER commit) ---
+.env
+.env.local
+.env.*.local
+.env.production
+*.pem
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# --- Editor / OS ---
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+Thumbs.db
+
+# --- Misc ---
+.turbo/
+.vercel/
+*.tgz
+.cache/

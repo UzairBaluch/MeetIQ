@@ -65,23 +65,34 @@ export function SiteHeader() {
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
-          <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
-            <Link href="/sign-in">Sign in</Link>
+          <Button
+            render={<Link href="/sign-in" />}
+            variant="ghost"
+            size="sm"
+            className="hidden md:inline-flex"
+          >
+            Sign in
           </Button>
-          <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link href="/sign-up">Start free</Link>
+          <Button
+            render={<Link href="/sign-up" />}
+            size="sm"
+            className="hidden md:inline-flex"
+          >
+            Start free
           </Button>
 
           <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden"
-                aria-label="Open menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Open menu"
+                />
+              }
+            >
+              <Menu className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <SheetHeader>
@@ -101,11 +112,15 @@ export function SiteHeader() {
                 ))}
               </div>
               <div className="mt-6 flex flex-col gap-2 border-t border-border px-4 pt-6">
-                <Button asChild variant="outline" className="w-full">
-                  <Link href="/sign-in">Sign in</Link>
+                <Button
+                  render={<Link href="/sign-in" />}
+                  variant="outline"
+                  className="w-full"
+                >
+                  Sign in
                 </Button>
-                <Button asChild className="w-full">
-                  <Link href="/sign-up">Start free</Link>
+                <Button render={<Link href="/sign-up" />} className="w-full">
+                  Start free
                 </Button>
                 <div className="mt-2 flex justify-end">
                   <ThemeToggle />

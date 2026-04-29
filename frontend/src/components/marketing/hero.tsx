@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, PlayCircle, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { MeetingMockup } from "./meeting-mockup";
 
 export function Hero() {
@@ -66,23 +67,26 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button
-            render={<Link href="/sign-up" />}
-            size="lg"
-            className="h-12 rounded-full px-6 text-base shadow-lg"
+          <Link
+            href="/sign-up"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "h-12 rounded-full px-6 text-base shadow-lg",
+            )}
           >
             Start free
             <ArrowRight className="ml-1 h-4 w-4" />
-          </Button>
-          <Button
-            render={<Link href="#demo" />}
-            size="lg"
-            variant="outline"
-            className="h-12 rounded-full border-border/70 bg-background/60 px-6 text-base backdrop-blur-md"
+          </Link>
+          <Link
+            href="#demo"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "h-12 rounded-full border-border/70 bg-background/60 px-6 text-base backdrop-blur-md",
+            )}
           >
             <PlayCircle className="mr-1 h-4 w-4" />
             Watch demo
-          </Button>
+          </Link>
         </motion.div>
 
         <motion.p

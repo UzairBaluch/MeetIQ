@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { SectionReveal } from "@/components/shared/section-reveal";
 import { cn } from "@/lib/utils";
 
@@ -106,13 +106,17 @@ export function PricingPreview() {
                   </span>
                 </div>
 
-                <Button
-                  render={<Link href={tier.href} />}
-                  className={cn("mt-6 h-11", !tier.featured && "")}
-                  variant={tier.featured ? "default" : "outline"}
+                <Link
+                  href={tier.href}
+                  className={cn(
+                    buttonVariants({
+                      variant: tier.featured ? "default" : "outline",
+                    }),
+                    "mt-6 h-11",
+                  )}
                 >
                   {tier.cta}
-                </Button>
+                </Link>
 
                 <ul className="mt-7 space-y-3 text-sm">
                   {tier.features.map((feature) => (

@@ -1,0 +1,12 @@
+import { MeetingRoom } from "@/components/meeting/meeting-room";
+
+export const metadata = { title: "Meeting" };
+
+export default async function MeetingPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return <MeetingRoom meetingId={id} />;
+}

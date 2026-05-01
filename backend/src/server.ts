@@ -6,7 +6,7 @@ import { env } from "./config/env.js";
 import { attachSocketHandlers } from "./utils/socket.js";
 
 async function bootstrap(): Promise<void> {
-  await connectDatabase(env.mongoUri);
+  await connectDatabase();
 
   const app = createApp();
   const server = createServer(app);

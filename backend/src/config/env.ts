@@ -8,11 +8,13 @@ function toInt(value: string | undefined, fallback: number): number {
 export interface Env {
   nodeEnv: string;
   port: number;
-  mongoUri: string;
+  databaseUrl: string;
 }
 
 export const env: Env = {
   nodeEnv: process.env.NODE_ENV ?? "development",
   port: toInt(process.env.PORT, 6000),
-  mongoUri: process.env.MONGODB_URI ?? "mongodb://127.0.0.1:27017/meetiq",
+  databaseUrl:
+    process.env.DATABASE_URL ??
+    "postgresql://postgres:postgres@localhost:5432/meetiq?schema=public",
 };

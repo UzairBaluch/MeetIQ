@@ -24,29 +24,25 @@
 
 ## 1. Architecture (recap)
 
-Strict 4-layer per feature:
+Horizontal 4-layer layout (Express + Mongoose):
 
 ```
-modules/<feature>/
-  <feature>.routes.ts        # express.Router(), wires controllers
-  <feature>.controller.ts    # parses req, calls service, shapes res
-  <feature>.service.ts       # business logic, no Express types
-  <feature>.repository.ts    # Prisma access only
-  <feature>.schema.ts        # Zod request/response schemas
-  <feature>.events.ts        # Socket.IO event handlers (if any)
+backend/src/
+  app.ts             # Express app factory
+  server.ts          # HTTP listen, Mongo connect, Socket.IO bootstrap
+  config/            # env, DB bootstrap
+  routes/            # express.Router mounts → controllers
+  controllers/       # HTTP: validate body/query, call service, send response
+  services/          # business rules — no Mongoose imports when a repo exists
+  repositories/      # persistence (queries, saves); import models from models/
+  models/            # Mongoose Schema + model definitions
+  middleware/        # auth, errors, logging, limits
+  utils/             # shared helpers & infra glue (e.g. socket registry)
 ```
 
-Cross-cutting:
+Name files consistently by resource (`user.routes.ts`, `user.controller.ts`, `user.service.ts`, `user.repository.ts`; `models/user.model.ts`).
 
-```
-src/
-  middleware/   # auth, error-handler, rate-limit, request-logger
-  lib/          # prisma, redis, bullmq queues, openai, s3, mailer
-  jobs/         # bullmq workers (transcribe, summarize, send-recap)
-  realtime/     # socket.io setup, namespaces, room manager
-  types/        # shared internal types
-  config/       # env loader (zod-validated), constants
-```
+**Validation:** HTTP-only Zod (etc.) stays co-located as `controllers/<resource>.schema.ts` or under `utils/` when shared — not a separate top-level `schemas/` folder. **Mongo schema** lives **only** in `models/` (no Zod ↔ document mixing unless deliberate).
 
 ---
 

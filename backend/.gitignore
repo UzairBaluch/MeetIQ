@@ -1,0 +1,8 @@
+# Backend build & deps (root .gitignore also applies repo-wide)
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Secrets — never commit
+.env

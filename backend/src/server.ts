@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 import { createApp } from "./app.js";
 import { connectDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
-import { attachSocketHandlers } from "./lib/socket.js";
+import { attachSocketHandlers } from "./utils/socket.js";
 
 async function bootstrap(): Promise<void> {
   await connectDatabase(env.mongoUri);

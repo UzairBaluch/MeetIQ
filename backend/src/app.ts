@@ -3,7 +3,8 @@ import express, { type Express } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import { env } from "./config/env.js";
-import routes from "./routes/index.js";
+import apiRouter from "./routes/index.js";
+import { systemRouter } from "./routes/system.routes.js";
 
 export function createApp(): Express {
   const app = express();
@@ -21,11 +22,8 @@ export function createApp(): Express {
     app.use(morgan("dev"));
   }
 
-  app.get("/", (_req, res) => {
-    res.json({ service: "meetiq-api", env: env.nodeEnv });
-  });
-
-  app.use("/api", routes);
+  app.use(systemRouter);
+  app.use("/api", apiRouter);
 
   return app;
 }

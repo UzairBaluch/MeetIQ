@@ -15,3 +15,5 @@ const validate = (schema: ZodSchema): RequestHandler => {
     next();
   };
 };
+
+export {validate}

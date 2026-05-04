@@ -6,4 +6,10 @@ const authLimiter = rateLimit({
   message: { success: false, message: "To many attempts, please try again later" },
 });
 
-export { authLimiter };
+const publicLimiter = rateLimit({
+  windowMs: 10 * 60 * 100,
+  max: 50,
+  message: { success: false, message: "Too many requests, please try again later" },
+});
+
+export { authLimiter, publicLimiter };

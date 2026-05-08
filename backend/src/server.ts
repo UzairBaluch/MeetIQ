@@ -3,6 +3,7 @@ import { Server } from "socket.io";
 import { createApp } from "./app.js";
 import { connectDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
+import { logger } from "./utils/logger.js";
 import { attachSocketHandlers } from "./utils/socket.js";
 
 async function bootstrap(): Promise<void> {
@@ -16,11 +17,11 @@ async function bootstrap(): Promise<void> {
   attachSocketHandlers(io);
 
   server.listen(env.port, () => {
-    console.log(`HTTP + Socket.IO on port ${env.port} (${env.nodeEnv})`);
+    logger.info(`HTTP + Socket.IO on port ${env.port} (${env.nodeEnv})`);
   });
 }
 
 bootstrap().catch((err: unknown) => {
-  console.error(err);
+  logger.error("Bootstrap failed", { err });
   process.exit(1);
 });

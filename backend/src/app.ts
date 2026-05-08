@@ -3,6 +3,7 @@ import express, { type Express } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import { env } from "./config/env.js";
+import { errorHandler, notFoundHandler } from "./middleware/error.middleware.js";
 import apiRouter from "./routes/index.js";
 import { systemRouter } from "./routes/system.routes.js";
 
@@ -24,6 +25,8 @@ export function createApp(): Express {
 
   app.use(systemRouter);
   app.use("/api", apiRouter);
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }

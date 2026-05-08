@@ -16,5 +16,5 @@ export const env: Env = {
   port: toInt(process.env.PORT, 6000),
   databaseUrl:
     process.env.DATABASE_URL ??
-    "postgresql://postgres:postgres@localhost:5432/meetiq?schema=public",
+    "postgresql://postgres:postgres@localhost:5434/meetiq?schema=public",
 };

@@ -17,17 +17,20 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "cd .. && husky backend/.husky"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
     "bcrypt": "^6.0.0",
+    "compression": "^1.8.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.4.1",
     "helmet": "^8.1.0",
     "http-status": "^2.1.0",
+    "redis": "^5.6.0",
     "morgan": "^1.10.1",
     "socket.io": "^4.8.3",
     "winston": "^3.19.0",
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
@@ -43,6 +47,7 @@
     "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.5.0",
+    "husky": "^9.1.7",
     "prettier": "^3.8.3",
     "prisma": "^6.7.0",
     "tsx": "^4.21.0",

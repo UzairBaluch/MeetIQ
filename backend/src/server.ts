@@ -3,16 +3,19 @@ import { Server } from "socket.io";
 import { createApp } from "./app.js";
 import { connectDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
+import { connectRedis } from "./config/redis.js";
 import { logger } from "./utils/logger.js";
 import { attachSocketHandlers } from "./utils/socket.js";
 
 async function bootstrap(): Promise<void> {
   await connectDatabase();
+  await connectRedis();
 
   const app = createApp();
   const server = createServer(app);
+  const corsOrigin = env.corsOrigins.length > 0 ? env.corsOrigins : true;
   const io = new Server(server, {
-    cors: { origin: true, credentials: true },
+    cors: { origin: corsOrigin, credentials: true },
   });
   attachSocketHandlers(io);
 

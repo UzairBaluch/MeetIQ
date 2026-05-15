@@ -8,12 +8,7 @@ const notFoundHandler = (req: Request, _res: Response, next: NextFunction): void
   next(new ApiError(404, `Route not found: ${req.method} ${req.originalUrl}`));
 };
 
-const errorHandler = (
-  err: unknown,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-): void => {
+const errorHandler = (err: unknown, req: Request, res: Response, _next: NextFunction): void => {
   if (err instanceof ZodError) {
     res.status(400).json({
       success: false,
@@ -32,7 +27,7 @@ const errorHandler = (
     return;
   }
 
-  logger.error("Unhandled error", { err });
+  logger.error("Unhandled error", { err, requestId: req.id });
   res.status(500).json({
     success: false,
     message: "Internal server error",

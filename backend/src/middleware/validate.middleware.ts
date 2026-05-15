@@ -3,8 +3,7 @@ import { type RequestHandler } from "express";
 import { type ZodSchema } from "zod";
 
 const validate = (schema: ZodSchema): RequestHandler => {
-  return (req, res, next) => {
-    // parse() throws ZodError on invalid input; global error middleware formats the response.
+  return (req, _res, next) => {
     const raw = req.method === "GET" || req.method === "HEAD" ? req.query : req.body;
     const parsed = schema.parse(raw);
     if (req.method === "GET" || req.method === "HEAD") {
@@ -16,4 +15,4 @@ const validate = (schema: ZodSchema): RequestHandler => {
   };
 };
 
-export {validate}
+export { validate };
